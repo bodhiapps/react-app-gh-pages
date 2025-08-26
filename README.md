@@ -1,12 +1,9 @@
-# React + TypeScript + Vite GitHub Pages Template
+# {{PROJECT_NAME}}
 
-A modern, production-ready template for React applications with automatic GitHub Pages deployment.
+A React + TypeScript + Vite application deployed to GitHub Pages.
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js (version 22+ recommended - required by Vite 7+)
-- npm
+<!--TEMPLATE_INSTRUCTIONS_START-->
+## 🚀 Quick Start (For Template Users)
 
 ### Using this Template
 
@@ -20,7 +17,7 @@ A modern, production-ready template for React applications with automatic GitHub
 3. **Run the setup script**:
    ```bash
    npm install
-   node setup-template.js
+   npm run setup
    ```
    This will configure the project name and update all necessary files.
 
@@ -36,18 +33,41 @@ If you prefer to set up manually:
 1. Update the `name` field in `package.json` to match your repository name
 2. The `vite.config.ts` will automatically use this name for the GitHub Pages base path
 3. Update the title in `index.html` if desired
+4. Replace `{{PROJECT_NAME}}` and `{{REPO_NAME}}` placeholders in this README
 
-## 📦 Deployment to GitHub Pages
+<!--TEMPLATE_INSTRUCTIONS_END-->
 
-This template includes automatic deployment via GitHub Actions:
+## 🚀 Getting Started
 
-1. **Enable GitHub Pages**:
-   - Go to your repository Settings → Pages
-   - Select "GitHub Actions" as the source
+### Prerequisites
+- Node.js (version 22+ recommended - required by Vite 7+)
+- npm
 
-2. **Push to main branch** - deployment happens automatically!
+### Installation
 
-3. **Your app will be live at**: `https://[your-username].github.io/[repository-name]/`
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📦 Deployment
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Setup GitHub Pages
+
+1. Push your code to the `main` branch
+2. Go to your repository Settings → Pages
+3. Select "GitHub Actions" as the source
+4. The workflow will automatically deploy your app
+
+Your app will be available at: `https://[your-username].github.io/{{REPO_NAME}}/`
 
 ## ✨ Features
 
@@ -61,89 +81,53 @@ This template includes automatic deployment via GitHub Actions:
 
 ## 🛠️ Available Scripts
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build optimized production bundle
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint for code quality
-- `npm run deploy` - Build the project (used by GitHub Actions)
+- `npm run lint` - Run ESLint
+- `npm run deploy` - Build the project
+
+## 🏗️ Built With
+
+- [React](https://reactjs.org/) - UI Library
+- [TypeScript](https://www.typescriptlang.org/) - Type Safety
+- [Vite](https://vitejs.dev/) - Build Tool
+- [GitHub Pages](https://pages.github.com/) - Hosting
 
 ## 📁 Project Structure
 
 ```
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # GitHub Pages deployment workflow
+{{REPO_NAME}}/
 ├── public/
-│   ├── 404.html          # SPA routing support for GitHub Pages
+│   ├── 404.html          # SPA routing support
 │   └── vite.svg
 ├── src/
-│   ├── assets/           # Static assets
-│   ├── App.tsx          # Main App component
-│   ├── App.css          # App styles
-│   ├── main.tsx         # React entry point
-│   └── index.css        # Global styles
-├── index.html           # HTML template
-├── vite.config.ts       # Vite configuration (auto-configured for GitHub Pages)
-├── package.json         # Dependencies and scripts
-└── setup-template.js    # One-time setup script
+│   ├── assets/
+│   ├── App.tsx
+│   ├── App.css
+│   ├── main.tsx
+│   └── index.css
+├── .github/
+│   └── workflows/
+│       └── deploy.yml     # GitHub Pages deployment
+├── index.html
+├── vite.config.ts         # Vite configuration
+└── package.json
 ```
 
-## 🔧 Configuration Details
+## 🔧 Configuration
 
-### Vite Configuration
-The `vite.config.ts` automatically configures the base path for GitHub Pages:
-- **Development**: Uses `/` for local development
-- **Production**: Uses `/[package-name]/` for GitHub Pages deployment
+The project is pre-configured for GitHub Pages deployment:
 
-### GitHub Actions Workflow
-The deployment workflow:
-- Triggers on pushes to `main` branch
-- Uses Node.js 18 with npm caching
-- Builds and deploys to GitHub Pages automatically
-- Includes proper permissions for Pages deployment
-
-### SPA Routing Support
-The `public/404.html` file enables client-side routing by serving the React app for all routes, making React Router work seamlessly on GitHub Pages.
-
-## 🎨 Customization
-
-### Styling
-- Modify `src/App.css` and `src/index.css` for styling
-- The template uses vanilla CSS, but you can easily add:
-  - Tailwind CSS
-  - Styled Components
-  - Material-UI
-  - Or any other styling solution
-
-### Adding Dependencies
-```bash
-npm install [package-name]
-```
-
-### Environment Variables
-Create `.env` files for environment-specific configuration:
-```bash
-# .env.local
-VITE_API_URL=https://api.example.com
-```
+- **Vite Config**: Automatically sets the correct base path from package.json name
+- **GitHub Actions**: Deploys on every push to main branch
+- **SPA Routing**: 404.html enables client-side routing
+- **Asset Optimization**: Vite handles bundling and optimization
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🆘 Support
-
-If you have any questions or run into issues:
-
-1. Check the [GitHub Issues](../../issues) for existing solutions
-2. Create a new issue if you need help
-3. Check the [Vite documentation](https://vitejs.dev/) for build-related questions
-4. Check the [GitHub Pages documentation](https://docs.github.com/en/pages) for deployment issues
-
----
-
-**Happy coding!** 🎉
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request

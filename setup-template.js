@@ -58,102 +58,17 @@ async function setup() {
       console.log('✅ Updated package-lock.json');
     }
 
-    // Update README
+    // Update README by replacing template placeholders
     const readmePath = path.join(__dirname, 'README.md');
     let readmeContent = fs.readFileSync(readmePath, 'utf8');
 
-    // Replace the template README with project-specific content
-    const newReadmeContent = `# ${projectName}
+    // Replace template placeholders with actual project values and remove template instructions
+    const updatedReadme = readmeContent
+      .replace(/\{\{PROJECT_NAME\}\}/g, projectName)
+      .replace(/\{\{REPO_NAME\}\}/g, sanitizedName)
+      .replace(/<!--TEMPLATE_INSTRUCTIONS_START-->[\s\S]*?<!--TEMPLATE_INSTRUCTIONS_END-->\n\n/g, '');
 
-A React + TypeScript + Vite application deployed to GitHub Pages.
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (version 18 or higher)
-- npm
-
-### Installation
-
-1. Clone this repository
-2. Install dependencies:
-   \`\`\`bash
-   npm install
-   \`\`\`
-
-3. Start the development server:
-   \`\`\`bash
-   npm run dev
-   \`\`\`
-
-## 📦 Deployment
-
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
-
-### Setup GitHub Pages
-
-1. Push your code to the \`main\` branch
-2. Go to your repository Settings → Pages
-3. Select "GitHub Actions" as the source
-4. The workflow will automatically deploy your app
-
-Your app will be available at: \`https://[your-username].github.io/${sanitizedName}/\`
-
-## 🛠️ Available Scripts
-
-- \`npm run dev\` - Start development server
-- \`npm run build\` - Build for production
-- \`npm run preview\` - Preview production build locally
-- \`npm run lint\` - Run ESLint
-- \`npm run deploy\` - Build the project
-
-## 🏗️ Built With
-
-- [React](https://reactjs.org/) - UI Library
-- [TypeScript](https://www.typescriptlang.org/) - Type Safety
-- [Vite](https://vitejs.dev/) - Build Tool
-- [GitHub Pages](https://pages.github.com/) - Hosting
-
-## 📁 Project Structure
-
-\`\`\`
-${sanitizedName}/
-├── public/
-│   ├── 404.html          # SPA routing support
-│   └── vite.svg
-├── src/
-│   ├── assets/
-│   ├── App.tsx
-│   ├── App.css
-│   ├── main.tsx
-│   └── index.css
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # GitHub Pages deployment
-├── index.html
-├── vite.config.ts         # Vite configuration
-└── package.json
-\`\`\`
-
-## 🔧 Configuration
-
-The project is pre-configured for GitHub Pages deployment:
-
-- **Vite Config**: Automatically sets the correct base path from package.json name
-- **GitHub Actions**: Deploys on every push to main branch
-- **SPA Routing**: 404.html enables client-side routing
-- **Asset Optimization**: Vite handles bundling and optimization
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch (\`git checkout -b feature/AmazingFeature\`)
-3. Commit your changes (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push to the branch (\`git push origin feature/AmazingFeature\`)
-5. Open a Pull Request
-`;
-
-    fs.writeFileSync(readmePath, newReadmeContent);
+    fs.writeFileSync(readmePath, updatedReadme);
     console.log('✅ Updated README.md');
 
     // Clean up the setup script
