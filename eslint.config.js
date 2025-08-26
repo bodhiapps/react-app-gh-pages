@@ -5,6 +5,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import tailwindcss from 'eslint-plugin-tailwindcss'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
@@ -34,6 +35,7 @@ export default tseslint.config([
     },
     plugins: {
       import: importPlugin,
+      tailwindcss: tailwindcss,
     },
     rules: {
       'import/order': [
@@ -65,6 +67,11 @@ export default tseslint.config([
       '@typescript-eslint/prefer-as-const': 'error',
       'prefer-const': 'error',
       'no-var': 'error',
+
+      // Tailwind CSS rules
+      'tailwindcss/classnames-order': 'warn',
+      'tailwindcss/no-custom-classname': 'off',
+      'tailwindcss/no-contradicting-classname': 'error',
     },
   },
   {
@@ -81,10 +88,7 @@ export default tseslint.config([
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
 
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': 'off',
 
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
@@ -108,6 +112,10 @@ export default tseslint.config([
       'import/resolver': {
         typescript: true,
         node: true,
+      },
+      tailwindcss: {
+        callees: ['cn', 'cva'],
+        config: 'tailwind.config.js',
       },
     },
   },
