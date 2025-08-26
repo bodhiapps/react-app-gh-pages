@@ -7,8 +7,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import readline from 'readline';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,7 +60,7 @@ async function setup() {
 
     // Update README by replacing template placeholders
     const readmePath = path.join(__dirname, 'README.md');
-    let readmeContent = fs.readFileSync(readmePath, 'utf8');
+    const readmeContent = fs.readFileSync(readmePath, 'utf8');
 
     // Replace template placeholders with actual project values and remove template instructions
     const updatedReadme = readmeContent
